@@ -1,5 +1,7 @@
 package com.itexperts.projetofinal.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.itexperts.projetofinal.model.Account;
@@ -13,6 +15,11 @@ public class AccountService {
 	public AccountService(AccountRepository accountRepository) {
 		this.accountRepository = accountRepository;
 	}
+	
+	public Page<Account> findAll(Pageable pageable){
+		Page<Account> list = accountRepository.findAll(pageable);		
+		return list;
+	}	
 	
 	public Account create (Account account) {
 		Account a = new Account();
